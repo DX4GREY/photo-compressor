@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Compressor</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <h1>Photo Compressor</h1>
+  <div class="card">
+    <div class="drop-zone" id="drop-zone">
+      <p>Drag and drop an image here or click to upload</p>
+      <input type="file" id="file-input" accept="image/*" hidden />
+    </div>
+    <div class="slider-container">
+      <label for="quality">Quality: <span id="quality-value">80%</span></label>
+      <input type="range" id="quality" min="10" max="100" value="80" />
+    </div>
+    <div class="slider-container">
+      <label for="resize">Resize (%): <span id="resize-value">100%</span></label>
+      <input type="range" id="resize" min="10" max="100" value="100" />
+    </div>
+    <div class="size-info">
+      <p>Original size: <span id="original-size">-</span></p>
+      <p>Estimated size after compression: <span id="estimated-size">-</span></p>
+    </div>
+    <button id="compress-btn">Compress</button>
+    <div class="preview" id="preview">
+      <div>
+        <p>Original Preview:</p>
+        <img id="original-preview" src="" alt="Original Preview" />
+      </div>
+    </div>
+    <div class="output" id="output"></div>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+</html>
