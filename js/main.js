@@ -45,8 +45,8 @@ function updateEstimate() {
 }
 
 // Generate a unique file name for the compressed image
-function generateFileName() {
-  return `compressed_${Date.now()}_${Math.floor(Math.random() * 100000)}.jpg`;
+function generateFileName(extension) {
+  return `compressed_${Date.now()}_${Math.floor(Math.random() * 100000)}.${extension}`;
 }
 
 // Compress and download the image
@@ -68,11 +68,12 @@ function compressImage() {
 
       // Compress the image
       const quality = qualitySlider.value / 100;
+      const extension = imageFile.type.split('/')[1]; // Extract extension from MIME type
       canvas.toBlob((blob) => {
         const url = URL.createObjectURL(blob);
-        const fileName = generateFileName();
+        const fileName = generateFileName(extension);
         output.innerHTML = `<a href="${url}" download="${fileName}">Download Compressed Image</a>`;
-      }, 'image/jpeg', quality);
+      }, imageFile.type, quality); // Use the original MIME type
     };
     img.src = e.target.result;
   };
